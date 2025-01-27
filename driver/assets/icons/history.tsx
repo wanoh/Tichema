@@ -7,7 +7,7 @@ export function History() {
       <Path
         d="M11.001 7.33435V11.001L13.2926 13.2927"
         stroke="#8F8F8F"
-        stroke-width="1.5"
+        strokeWidth="1.5"
         stroke-linecap="round"
         stroke-linejoin="round"
       />

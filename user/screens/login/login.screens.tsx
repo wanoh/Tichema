@@ -10,6 +10,7 @@ import PhoneNumberInput from '@/components/login/phone-number.input'
 import Button from '@/components/common/button'
 import {  useToast } from 'react-native-toast-notifications' 
 import axios from "axios"
+import { router } from 'expo-router'
 
 
 export default function LoginScreen() {
@@ -60,7 +61,8 @@ export default function LoginScreen() {
             <View style={[external.mt_25, external.Pb_15]}>
               <Button
               title="Get OTP"
-              onPress={()=> handleSubmit()}
+              // onPress={()=> handleSubmit()}
+              onPress={()=> router.push("/(routes)/otp-verification")}
               />
             </View>
           </View>
