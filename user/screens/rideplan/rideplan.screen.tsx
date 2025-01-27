@@ -1,4 +1,4 @@
-import { View, Text, KeyboardAvoidingView, Platform, TouchableOpacity, Dimensions, TextInput } from 'react-native'
+import { View, Text, KeyboardAvoidingView, Platform, TouchableOpacity, Dimensions, TextInput, Pressable } from 'react-native'
 import styles from './styles'
 import { useState } from 'react'
 import { external } from '@/styles/external.style'
@@ -7,11 +7,13 @@ import MapView, { Marker } from "react-native-maps"
 import MapViewDirections from "react-native-maps-directions"
 import { style } from '../verification/styles'
 import { router } from 'expo-router'
-import { Clock, LeftArrow, PickLocation } from '@/utils/icons'
+import { Clock, LeftArrow, PickLocation,PickUpLocation} from '@/utils/icons'
 import color from '@/themes/app.colors'
 import DownArrow from '@/assets/icons/downArrow'
 import PlaceHolder from '@/assets/icons/placeHolder'
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete'
+import axios from "axios";
+
 
 export default function RidePlanScreen() {
 
@@ -35,6 +37,41 @@ export default function RidePlanScreen() {
 
     const [keyboardAvoidingHeight, setKeyboardAvoidingHeight] = useState(false)
 
+    const handlePlaceSelect = async (placeId: any) => {
+        try {
+          const response = await axios.get(
+            `https://maps.googleapis.com/maps/api/place/details/json`,
+            {
+              params: {
+                place_id: placeId,
+                key: process.env.EXPO_PUBLIC_GOOGLE_CLOUD_API_KEY,
+              },
+            }
+          );
+          const { lat, lng } = response.data.result.geometry.location;
+    
+          const selectedDestination = { latitude: lat, longitude: lng };
+          setRegion({
+            ...region,
+            latitude: lat,
+            longitude: lng,
+          });
+          setMarker({
+            latitude: lat,
+            longitude: lng,
+          });
+          setPlaces([]);
+          requestNearbyDrivers();
+          setLocationSelected(true);
+          setKeyboardAvoidingHeight(false);
+          if (currentLocation) {
+            await fetchTravelTimes(currentLocation, selectedDestination);
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      };
+  
     const handleInputChange = (text: any) =>{
         setQuery(text);
     }
@@ -196,6 +233,23 @@ export default function RidePlanScreen() {
                   </View>
                     </View>
                 </View>
+                {/* Last sessions */}
+              {places.map((place: any, index: number) => (
+                <Pressable
+                  key={index}
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                    marginBottom: windowHeight(20),
+                  }}
+                  onPress={() => handlePlaceSelect(place.place_id)}
+                >
+                  <PickUpLocation />
+                  <Text style={{ paddingLeft: 15, fontSize: 18 }}>
+                    {place.description}
+                  </Text>
+                </Pressable>
+              ))}
                 </View>
             </View>
     </KeyboardAvoidingView>
