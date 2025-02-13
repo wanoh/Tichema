@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "RideWave",
-    "slug": "RideWave",
+    "name": "Tichema",
+    "slug": "Tichema",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "scheme": "RideWave",
+    "scheme": "Tichema",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
@@ -13,14 +13,15 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.kayaba.Tichema"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.becodemy.RideWave",
+      "package": "com.kayaba.Tichema",
       "config": {
         "googleMaps": {
           "apiKey": ""
@@ -35,7 +36,9 @@
       [
         "expo-font",
         {
-          "fonts": ["./assets/fonts/TT-Octosquares-Medium.ttf"]
+          "fonts": [
+            "./assets/fonts/TT-Octosquares-Medium.ttf"
+          ]
         }
       ]
     ],
