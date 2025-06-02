@@ -47,7 +47,7 @@ export default function PhoneNumberInput({ width, phone_number, setPhone_number,
             },
           ]}
         >
-       <SelectInput
+       {/* <SelectInput
        title= "+233"
        placeholder="Select Your Country"
        value={countryCode}
@@ -55,7 +55,7 @@ export default function PhoneNumberInput({ width, phone_number, setPhone_number,
        showWarning={false}
        warning={'Please Choose Your Country Code!'}
        items={countryWithKeys}
-       />
+       /> */}
         </View>
         <View
           style={[

@@ -17,7 +17,7 @@ interface InputProps{
 }
 
 export default function SelectInput({title, placeholder,items,value,warning,onValueChange,showWarning}: InputProps) {
-  const {colors} = useTheme()
+  // const {colors} = useTheme()
     return (
         <View>
         {/* <Text style={[styles.title, { color: colors.text }]}>{title}</Text> */}
@@ -29,13 +29,13 @@ export default function SelectInput({title, placeholder,items,value,warning,onVa
             inputIOS: {
               ...styles.input,
               backgroundColor: color.lightGray,
-              borderColor: colors.border,
+              // borderColor: colors.border,
               height: windowHeight(39),
             },
             inputAndroid: {
               ...styles.input,
               backgroundColor: color.lightGray,
-              borderColor: colors.border,
+              // borderColor: colors.border,
               height: windowHeight(39),
               color: "#000",
             },

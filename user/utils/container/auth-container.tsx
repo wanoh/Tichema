@@ -1,4 +1,4 @@
-import {View , Text, Image, ScrollView} from "react-native";
+import {View , Text, Image, ScrollView, KeyboardAvoidingView, Platform} from "react-native";
 import React,{ReactNode} from "react";
 import {external} from "@/styles/external.style"
 import Images from "../images"
@@ -13,7 +13,10 @@ type Props ={
 
 const AuthContainer = ({container, topSpace, imageShow}:Props) =>{
     return (
-        <View style={[external.fx_1]}>
+        <KeyboardAvoidingView 
+        style={[external.fx_1]}
+        behavior = {Platform.OS === "ios" ? "padding" : "height"}
+        >
             {imageShow && (
                 <Text style={{fontFamily :"TT-Octosquares-Medium",
                     fontSize: windowWidth(25),
@@ -35,7 +38,7 @@ const AuthContainer = ({container, topSpace, imageShow}:Props) =>{
                         </ScrollView>
                     </View>
                 </View>
-        </View>
+        </KeyboardAvoidingView>
     )
 }
 

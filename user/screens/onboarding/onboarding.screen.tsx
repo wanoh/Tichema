@@ -34,8 +34,7 @@ export default function OnboardingScreen() {
                      <TouchableOpacity
                         style={styles.backArrow}
                         onPress={()=> router.push("/(routes)/login")}
-                        >
-                          
+                        >                          
                         <BackArrow colors={color.whiteColor} width={21} height={21} />
                      </TouchableOpacity>
                     </ImageBackground>

@@ -13,7 +13,8 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.becodemy.RideWave"
     },
     "android": {
       "adaptiveIcon": {
@@ -35,7 +36,9 @@
       [
         "expo-font",
         {
-          "fonts": ["./assets/fonts/TT-Octosquares-Medium.ttf"]
+          "fonts": [
+            "./assets/fonts/TT-Octosquares-Medium.ttf"
+          ]
         }
       ]
     ],
